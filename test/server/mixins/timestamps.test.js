@@ -19,11 +19,11 @@ describe('Timetstamp Mixins', () => {
   it('should it should define a createdAt property', () => {
     // put testing "Model" through the function
     timestamps(Model)
-// assert that it was called with the correct settings
-expect(Model.defineProperty.calledWith('createdAt', {
-  type: Date,
-  default: '$now',
-})).to.be.true
+    // assert that it was called with the correct settings
+    expect(Model.defineProperty.calledWith('createdAt', {
+      type: Date,
+      default: '$now',
+    })).to.be.true
   })
 
   it('should it should define a updatedAt property', () => {

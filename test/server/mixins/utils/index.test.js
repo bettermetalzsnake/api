@@ -14,6 +14,5 @@ describe('Utility Functions', () => {
         done()
       })
     })
-    
   })
 })
