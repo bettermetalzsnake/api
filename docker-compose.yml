@@ -1,0 +1,43 @@
+version: '3'
+
+#all of our services
+services:
+  api:
+    #point to the development image
+    build:
+      context: ./images
+      dockerfile: ApiDevDockerfile
+    # only put :cached if on MacOS
+    volumes:
+     - ./api:/usr/src/api:cached
+    ports:
+      # machine:container
+      - 3001:3000
+    command: yarn start
+    env_file:
+      - ./env/dev.env
+
+  devdb:
+    image: mysql:5.7
+    # keeps db data local and easy to reset
+    volumes:
+      - ./devdb:/var/lib/mysql
+      # conf.d is a folder, and it reads whatever `.cnf` files are in there
+      - ./env:/etc/mysql/conf.d
+    ports:
+      - 3306:3306
+    env_file:
+      - ./env/dev.env
+
+  web:
+    build:
+      context: ./images
+      dockerfile: WebDevDockerfile
+    # only keep :cached if on MacOS
+    volumes:
+      - ./web:/usr/src/web:cached
+    ports:
+      - 3002:3000
+    env_file:
+      - ./env/webdev.env
+    command: yarn start    
