@@ -79,7 +79,7 @@ jobs:
           # $BASH_ENV is what you add values to that you want made available
           # in this particular job
           command: |
-            echo 'export IMAGE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/marcmartinez/api' >> $BASH_ENV
+            echo 'export IMAGE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/awsdevops/api' >> $BASH_ENV
       # run the build script
       - run:
           name: build image and deploy
