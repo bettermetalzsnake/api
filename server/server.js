@@ -9,9 +9,10 @@
 const loopback = require('loopback')
 const boot = require('loopback-boot')
 
-const app = module.exports = loopback()
+const app = loopback()
+module.exports = app
 
-app.start = function () {
+app.start = function appStart () {
   // start the web server
   return app.listen(() => {
     app.emit('started')
