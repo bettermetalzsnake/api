@@ -104,7 +104,7 @@ workflows:
       - test:
           requires:
             - install
-      - deploy:
+      - deploy_staging:
           requires:
             - test
           filters:
@@ -113,3 +113,10 @@ workflows:
             branches:
               only:
                 - staging
+        - deploy_production:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
