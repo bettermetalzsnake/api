@@ -129,7 +129,7 @@ workflows:
       - test:
           requires:
             - install
-     - deploy_staging:
+      - deploy_staging:
           requires:
             - test
           filters:
