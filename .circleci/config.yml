@@ -108,12 +108,10 @@ workflows:
           requires:
             - test
           filters:
-            # mention that this is how you'd filter for
-            # production and staging
             branches:
               only:
                 - staging
-        - deploy_production:
+      - deploy_production:
           requires:
             - test
           filters:
