@@ -1,6 +1,10 @@
 {
   "loopback-component-explorer": {
     "mountPath": "/explorer",
-    "generateOperationScopedModels": true
+    "generateOperationScopedModels": true,
+    "apiInfo": {
+      "title": "The API CI/CD for Staging AND Production",
+      "description": "the API is updated"
+    }
   }
 }
