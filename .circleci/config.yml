@@ -64,7 +64,7 @@ jobs:
           command: yarn test
 
   # deploy job
-  deploy:
+  deploy_staging:
     <<: *defaults
     # have to attach again
     steps:
