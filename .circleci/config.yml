@@ -64,7 +64,7 @@ jobs:
           command: yarn test
 
   # deploy job
-  deploy_production:
+  deploy_staging:
     <<: *defaults
     # have to attach again
     steps:
@@ -80,13 +80,36 @@ jobs:
           # in this particular job
           command: |
             echo 'export IMAGE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/marcmartinez/api' >> $BASH_ENV
+            echo 'export TASK_DEFINITION=$STAGING_TASK_DEFINITION' >> $BASH_ENV
+            echo 'export SERVICE=$STAGING_SERVICE' >> $BASH_ENV
+            echo 'export CLUSTER=$STAGING_CLUSTER' >> $BASH_ENV
       # run the build script
       - run:
           name: build image and deploy
           command: |
             chmod +x ./deploy.sh
             ./deploy.sh
-
+  # Deploy to production
+  deploy_production:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      # necessary to hook into docker
+      - setup_remote_docker
+      - run:
+          name: Set ENV Variables
+          # Sets the PRODUCTION specific values to be used in deploy.sh
+          command: |
+            echo 'export IMAGE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PRODUCTION_IMAGE_REPO' >> $BASH_ENV
+            echo 'export TASK_DEFINITION=$PRODUCTION_TASK_DEFINITION' >> $BASH_ENV
+            echo 'export SERVICE=$PRODUCTION_SERVICE' >> $BASH_ENV
+            echo 'export CLUSTER=$PRODUCTION_CLUSTER' >> $BASH_ENV
+      - run:
+          name: build image and deploy
+          command: |
+            chmod +x ./deploy.sh
+            ./deploy.sh
 # Where we define the actual order of jobs
 workflows:
   version: 2

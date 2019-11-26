@@ -2,9 +2,9 @@
 
 # >> CHANGE THESE << to match the names you're using
 # Set up our 3 main pieces
-TASK_DEFINITION="awsdevops-devapi"
-SERVICE="awsdevops-devapi"
-CLUSTER="AWSDevops-cluster"
+#TASK_DEFINITION="awsdevops-devapi"
+#SERVICE="awsdevops-devapi"
+#CLUSTER="AWSDevops-cluster"
 
 set -e
 
