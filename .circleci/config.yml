@@ -79,7 +79,7 @@ jobs:
           # $BASH_ENV is what you add values to that you want made available
           # in this particular job
           command: |
-            echo 'export IMAGE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$STAGING_IMAGE_REPO/api' >> $BASH_ENV
+            echo 'export IMAGE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$STAGING_IMAGE_REPO' >> $BASH_ENV
             echo 'export TASK_DEFINITION=$STAGING_TASK_DEFINITION' >> $BASH_ENV
             echo 'export SERVICE=$STAGING_SERVICE' >> $BASH_ENV
             echo 'export CLUSTER=$STAGING_CLUSTER' >> $BASH_ENV
