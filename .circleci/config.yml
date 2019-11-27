@@ -91,7 +91,7 @@ jobs:
             ./deploy.sh
 
   # Deploy to production
-  deploy_staging:
+  deploy_production:
     <<: *defaults
     steps:
       - attach_workspace:
