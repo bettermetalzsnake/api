@@ -111,6 +111,7 @@ jobs:
           command: |
             chmod +x ./deploy.sh
             ./deploy.sh
+            
 # Where we define the actual order of jobs
 workflows:
   version: 2

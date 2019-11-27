@@ -11,6 +11,8 @@ const boot = require('loopback-boot')
 
 const app = loopback()
 
+module.exports = app
+
 app.start = function appStart () {
   // start the web server
   return app.listen(() => {
