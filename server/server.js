@@ -10,6 +10,7 @@ const loopback = require('loopback')
 const boot = require('loopback-boot')
 
 const app = loopback()
+
 module.exports = app
 
 app.start = function appStart () {
