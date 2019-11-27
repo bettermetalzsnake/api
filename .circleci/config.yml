@@ -89,6 +89,7 @@ jobs:
           command: |
             chmod +x ./deploy.sh
             ./deploy.sh
+            
   # Deploy to production
   deploy_production:
     <<: *defaults
